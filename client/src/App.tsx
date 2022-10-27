@@ -1,5 +1,6 @@
 import type { User } from "./types";
 import UserDisplay from "./components/UserDisplay";
+
 function App() {
   const users: User[] = [
     {
