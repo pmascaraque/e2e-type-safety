@@ -1,25 +1,15 @@
-import type { User } from "./types";
 import UserDisplay from "./components/UserDisplay";
+import { useQuery } from "urql";
+import { GetUsersDocument } from "./graphql/generated";
 
 function App() {
-  const users: User[] = [
-    {
-      //mock data
-      name: "Sabin Adams",
-      messages: [
-        {
-          body: "Hey There!",
-        },
-        {
-          body: "Whats up!",
-        },
-      ],
-    },
-  ];
+  const [results] = useQuery({
+    query: GetUsersDocument
+  })
 
   return (
     <div className='bg-zinc-800 flex-col h-screen w-full flex items-center justify-center'>
-      {users.map((user, index) => (
+      {results.data?.users.map((user, index) => (
         <UserDisplay user={user} key={index} />
       ))}
     </div>
