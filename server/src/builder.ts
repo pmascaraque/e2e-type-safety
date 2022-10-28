@@ -17,4 +17,4 @@ export const builder = new SchemaBuilder<{
 });
 
 builder.queryType({})
-builder.addScalarType("Date", DateResolver, {})
+builder.addScalarType("Date", DateResolver, {});
